@@ -50,6 +50,20 @@ namespace ConsoleAppProject
 			double feet = milesInput * milesToFeet;
 			Console.WriteLine("{0} miles is {1} feet", milesInput, feet);
 
+			Console.WriteLine("Did you enjoy the app? (Yes/No)");
+			string answer = Console.ReadLine().ToUpper();
+
+			if (answer == "Y")
+
+			{
+				Console.WriteLine("since you enjoyed using the app why not follow us on social media @...." );
+			}
+			else
+			{
+				Console.WriteLine("kindly give us your feed back so we can make improvements");
+			}
+
+			Console.WriteLine("Thank you for using Distance Converter App!");
 		}
 
 	}
