@@ -2,10 +2,10 @@
 
 namespace ConsoleAppProject
 {
-	/// <summary>
+	/// 
 	/// This Project has been modified by:
 	/// Mustafa Akram 05/03/2023
-	/// </summary>
+	/// 
 	static class Program
 	{
 	
