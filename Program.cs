@@ -2,17 +2,15 @@
 
 namespace ConsoleAppProject
 {
-	/// 
+	/// <summary>
 	/// This Project has been modified by:
 	/// Mustafa Akram 05/03/2023
-	/// 
-	static class Program
+	/// </summary>
+	public class Program
 	{
-	
-
 		static void Main(string[] args)
 		{
-			Console.ForegroundColor = ConsoleColor.Yellow;
+			Console.ForegroundColor = ConsoleColor.Blue;
 
 			Console.WriteLine();
 			Console.WriteLine(" =================================================");
@@ -20,53 +18,102 @@ namespace ConsoleAppProject
 			Console.WriteLine(" =================================================");
 			Console.WriteLine();
 
-			Console.WriteLine("This converter can be used for the following conversions:");
-			Console.WriteLine("1. Meters to Miles");
-			Console.WriteLine("2. Kilometers to centimeters");
-			Console.WriteLine("3. Miles to Feet");
+			Console.WriteLine("Please select your From unit:");
+			Console.WriteLine("1. Miles");
+			Console.WriteLine("2. Feet");
+			Console.WriteLine("3. Meters");
+			Console.WriteLine();
 
-			double metersToMiles = 0.000621371;
+			Console.WriteLine("Kindly enter your choice:");
 
-			double kilometersToCentimeters = 10000;
+			string fromUnit = Console.ReadLine();
 
-			double milesToFeet = 5280;
+			Console.WriteLine("Please select your To unit:");
+			Console.WriteLine("1. Miles");
+			Console.WriteLine("2. Feet");
+			Console.WriteLine("3. Meters");
+			Console.WriteLine();
 
+			Console.WriteLine("Kindly enter your choice:");
 
-			Console.Write("Type distance in meters:");
-			double meters = Convert.ToDouble(Console.ReadLine());
+			string toUnit = Console.ReadLine();
 
-			double miles = meters * metersToMiles;
-			Console.WriteLine("{0} meters is {1} miles", meters, miles);
+			Console.WriteLine("Enter the distance:");
 
-			Console.Write("Enter distance in kilometers: ");
-			double kilometersInput = Convert.ToDouble(Console.ReadLine());
+			double distance = double.Parse(Console.ReadLine());
 
-			double centimeters = kilometersInput * kilometersToCentimeters;
-			Console.WriteLine("{0} kilometers is {1} centimeters", kilometersInput, centimeters);
+			double convertedDistance = ConvertDistance(fromUnit, toUnit, distance);
 
-			Console.Write("Enter distance in miles: ");
-			double milesInput = Convert.ToDouble(Console.ReadLine());
-
-			double feet = milesInput * milesToFeet;
-			Console.WriteLine("{0} miles is {1} feet", milesInput, feet);
+			Console.WriteLine("{0} {1} is equal to {2} {3}.", distance, GetUnitName(fromUnit), convertedDistance, GetUnitName(toUnit));
 
 			Console.WriteLine("Did you enjoy the app? (Yes/No)");
+
 			string answer = Console.ReadLine().ToUpper();
 
-			if (answer == "Y")
-
+			if (answer == "YES" || answer == "Y")
 			{
-				Console.WriteLine("since you enjoyed using the app why not follow us on social media @...." );
+				Console.WriteLine("Since you enjoyed using the app, why not follow us on social media @....");
 			}
 			else
 			{
-				Console.WriteLine("kindly give us your feed back so we can make improvements");
+				Console.WriteLine("Kindly give us your feedback so we can make improvements.");
 			}
 
-			Console.WriteLine("Thank you for using Distance Converter App!");
+			Console.WriteLine("Thank you for using the Distance Converter App!");
 		}
 
+		static double ConvertDistance(string fromUnit, string toUnit, double distance)
+		{
+			switch (fromUnit)
+			{
+				case "1": // miles
+					switch (toUnit)
+					{
+						case "2": // miles to feet
+							return distance * 5280;
+						case "3": // miles to meters
+							return distance * 1609.34;
+						default: // miles to miles
+							return distance;
+					}
+				case "2": // feet
+					switch (toUnit)
+					{
+						case "1": // feet to miles
+							return distance / 5280;
+						case "3": // feet to meters
+							return distance / 3.28084;
+						default: // feet to feet
+							return distance;
+					}
+				case "3": // meters
+					switch (toUnit)
+					{
+						case "1": // meters to miles
+							return distance / 1609.34;
+						case "2": // meters to feet
+							return distance * 3.28084;
+						default: // meters to meters
+							return distance;
+					}
+				default: // invalid input
+					return 0;
+			}
+		}
+
+		static string GetUnitName(string unit)
+		{
+			switch (unit)
+			{
+				case "1":
+					return "miles";
+				case "2":
+					return "feet";
+				case "3":
+					return "meters";
+				default:
+					return "";
+			}
+		}
 	}
-
 }
-
