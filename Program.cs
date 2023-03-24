@@ -6,7 +6,7 @@ namespace ConsoleAppProject
 	/// This Project has been modified by:
 	/// Mustafa Akram 05/03/2023
 	/// </summary>
-	public class Program
+	public class Program 
 	{
 		static void Main(string[] args)
 		{
